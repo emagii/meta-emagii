@@ -1,0 +1,13 @@
+#!/bin/bash
+
+if [ -n "$BASH_SOURCE" ]; then
+	export ROOT=$(readlink -f $(dirname "$BASH_SOURCE"))
+elif [ -n "$ZSH_NAME" ]; then
+	export ROOT=$(readlink -f $(dirname "$0"))
+else
+	export ROOT=$(readlink -f ${PWD})
+fi
+export POKY=$ROOT/poky
+export TEMPLATECONF=$ROOT/meta-emagii/conf
+export PATH=$PATH:$POKY/scripts
+source $ROOT/poky/oe-init-build-env "$@"
