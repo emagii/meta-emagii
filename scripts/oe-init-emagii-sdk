@@ -8,6 +8,6 @@ else
 	export ROOT=$(readlink -f ${PWD})
 fi
 export POKY=$ROOT/poky
-export TEMPLATECONF=$ROOT/meta-emagii/conf
+export TEMPLATECONF=$ROOT/poky/meta-emagii/conf
 export PATH=$PATH:$POKY/scripts
 source $ROOT/poky/oe-init-build-env "$@"
