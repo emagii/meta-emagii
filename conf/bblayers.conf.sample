@@ -11,8 +11,13 @@ BBLAYERS ?= " \
   ##OEROOT##/meta-emagii \
   ##OEROOT##/meta-map-sheriffco \
   ##OEROOT##/meta-raspberrypi \
-  ##OEROOT##/meta-ti \
+  ##OEROOT##/meta-ti/meta-ti-bsp \
+  ##OEROOT##/meta-ti/meta-ti-extras \
   ##OEROOT##/meta-atmel \
+  ##OEROOT##/meta-arm/meta-arm-bsp \
+  ##OEROOT##/meta-arm/meta-arm-toolchain \
+  ##OEROOT##/meta-arm/meta-arm-atp \
+  ##OEROOT##/meta-arm/meta-gem5 \
   ##OEROOT##/meta-aws \
   ##OEROOT##/meta-browser/meta-chromium \
   ##OEROOT##/meta-clang \
