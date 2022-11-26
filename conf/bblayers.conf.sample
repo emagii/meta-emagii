@@ -10,23 +10,21 @@ BBFILES ?= ""
 BBLAYERS ?= " \
   ##OEROOT##/meta-emagii \
   ##OEROOT##/meta-map-sheriffco \
-  ##OEROOT##/meta-beagleboard \
   ##OEROOT##/meta-raspberrypi \
   ##OEROOT##/meta-ti \
   ##OEROOT##/meta-atmel \
   ##OEROOT##/meta-aws \
-  ##OEROOT##/meta-browser \
+  ##OEROOT##/meta-browser\meta-chromium \
   ##OEROOT##/meta-clang \
   ##OEROOT##/meta-intel \
   ##OEROOT##/meta-java \
   ##OEROOT##/meta-mingw \
-  ##OEROOT##/meta-openamp \
   ##OEROOT##/meta-python2 \
   ##OEROOT##/meta-qt5 \
   ##OEROOT##/meta-security \
   ##OEROOT##/meta-virtualization \
   ##OEROOT##/meta-wayland \
-  ##OEROOT##/meta-laird-cp \
+  ##OEROOT##/meta-laird-cp/meta-laird-cp \
   ##OEROOT##/meta-rust \
   ##OEROOT##/meta-openembedded/meta-filesystems \
   ##OEROOT##/meta-openembedded/meta-gnome \
