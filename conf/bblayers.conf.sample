@@ -14,7 +14,7 @@ BBLAYERS ?= " \
   ##OEROOT##/meta-ti \
   ##OEROOT##/meta-atmel \
   ##OEROOT##/meta-aws \
-  ##OEROOT##/meta-browser\meta-chromium \
+  ##OEROOT##/meta-browser/meta-chromium \
   ##OEROOT##/meta-clang \
   ##OEROOT##/meta-intel \
   ##OEROOT##/meta-java \
