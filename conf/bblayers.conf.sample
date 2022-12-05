@@ -11,13 +11,15 @@ BBLAYERS ?= " \
   ##OEROOT##/meta-emagii \
   ##OEROOT##/meta-map-sheriffco \
   ##OEROOT##/meta-raspberrypi \
+  ##OEROOT##/meta-rpi64 \
   ##OEROOT##/meta-ti/meta-ti-bsp \
   ##OEROOT##/meta-ti/meta-ti-extras \
   ##OEROOT##/meta-atmel \
   ##OEROOT##/meta-arm/meta-arm-bsp \
   ##OEROOT##/meta-arm/meta-arm-toolchain \
-  ##OEROOT##/meta-arm/meta-arm-atp \
+  ##OEROOT##/meta-arm/meta-atp \
   ##OEROOT##/meta-arm/meta-gem5 \
+  ##OEROOT##/meta-arm/meta-arm \
   ##OEROOT##/meta-aws \
   ##OEROOT##/meta-browser/meta-chromium \
   ##OEROOT##/meta-clang \
@@ -26,8 +28,6 @@ BBLAYERS ?= " \
   ##OEROOT##/meta-mingw \
   ##OEROOT##/meta-python2 \
   ##OEROOT##/meta-qt5 \
-  ##OEROOT##/meta-security \
-  ##OEROOT##/meta-virtualization \
   ##OEROOT##/meta-wayland \
   ##OEROOT##/meta-laird-cp/meta-laird-cp \
   ##OEROOT##/meta-rust \
@@ -47,3 +47,7 @@ BBLAYERS ?= " \
   ##OEROOT##/meta-yocto-bsp \
   "
 
+#  Disable these layers, until we have a distro  with security and virtualization
+#  ##OEROOT##/meta-security \
+#  ##OEROOT##/meta-virtualization \
+#
