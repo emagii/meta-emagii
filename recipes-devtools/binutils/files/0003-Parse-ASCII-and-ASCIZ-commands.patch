@@ -1,0 +1,74 @@
+From 1f5276cfe428e15decef0156d920f8bded827b9d Mon Sep 17 00:00:00 2001
+From: Ulf Samuelsson <ulf@emagii.com>
+Date: Tue, 7 Feb 2023 19:21:00 +0100
+Subject: [PATCH 3/4] Parse ASCII and ASCIZ commands
+
+Signed-off-by: Ulf Samuelsson <ulf@emagii.com>
+---
+ ld/ldlang.c | 34 ++++++++++++++++++++++++++++++++++
+ ld/ldlang.h |  4 ++++
+ 2 files changed, 38 insertions(+)
+
+diff --git a/ld/ldlang.c b/ld/ldlang.c
+index df4c43ce..1698cbbd 100644
+--- a/ld/ldlang.c
++++ b/ld/ldlang.c
+@@ -8434,6 +8434,40 @@ lang_add_data (int type, union etree_union *exp)
+   new_stmt->type = type;
+ }
+ 
++void
++lang_add_string (bfd_vma size, char *s)
++{
++  lang_data_statement_type *new_stmt;
++  bfd_vma stringlen = strlen(s) + 1;    /* Add one for terminating '\0' */
++  bfd_vma fill_len = 0;
++  if (size == 0) {  /* Zero terminated string */
++    size = stringlen;
++  } else if (size > stringlen) {    /* Fix Size string */
++    fill_len = size - stringlen;
++  } else if (size > stringlen) {
++    /* We have an error */
++    einfo (_("%P:%pS: warning: string does not fit \"%s\"\n"), NULL, s);
++  }
++  /* Add byte expressions until end of string */
++  for (bfd_vma i = 0 ; i < size ; i++) {
++    new_stmt = new_stat (lang_data_statement, stat_ptr);
++    new_stmt->exp = exp_intop(s[i]);
++    new_stmt->type = BYTE;
++  }
++  /* Add byte expressions for filling to the end of the string */
++  for (bfd_vma i = 0 ; i < fill_len ; i++) {
++    new_stmt = new_stat (lang_data_statement, stat_ptr);
++    new_stmt->exp = exp_intop(0);
++    new_stmt->type = BYTE;
++  }
++}
++
++void
++lang_add_stringz (char *s)
++{
++    lang_add_string (0, s);
++}
++
+ /* Create a new reloc statement.  RELOC is the BFD relocation type to
+    generate.  HOWTO is the corresponding howto structure (we could
+    look this up, but the caller has already done so).  SECTION is the
+diff --git a/ld/ldlang.h b/ld/ldlang.h
+index 0d057c9b..a170005b 100644
+--- a/ld/ldlang.h
++++ b/ld/ldlang.h
+@@ -631,6 +631,10 @@ extern void pop_stat_ptr
+   (void);
+ extern void lang_add_data
+   (int type, union etree_union *);
++extern void
++lang_add_string (bfd_vma size, char *s);
++extern void
++lang_add_stringz (char *s);
+ extern void lang_add_reloc
+   (bfd_reloc_code_real_type, reloc_howto_type *, asection *, const char *,
+    union etree_union *);
+-- 
+2.17.1
+
