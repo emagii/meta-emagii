@@ -1,0 +1,1 @@
+inherit license-mit
