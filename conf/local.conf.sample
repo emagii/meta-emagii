@@ -92,7 +92,7 @@ SSTATE_DIR ?= "${HOME}/sstate-cache"
 # these defaults.
 #
 DISTRO ?= "poky"
-DISTRO_FEATURES = "ext2 security systemd usbhost ${DISTRO_FEATURES_LIBC}"
+DISTRO_FEATURES = "ext2 security systemd usbhost opengl ${DISTRO_FEATURES_LIBC}"
 # As an example of a subclass there is a "bleeding" edge policy configuration
 # where many versions are set to the absolute latest code from the upstream 
 # source control systems. This is just mentioned here as an example, its not
